@@ -26,7 +26,17 @@ TABLES['titles'] = (
 	"   PRIMARY KEY ('title_id')"
     ") ENGINE=InnoDB")
 
+# Creating employees table
+TABLES['employees'] = (
+    "CREATE TABLE 'employees' ("
+    "   'emp_no' INT,"
+    "   'emp_title_id' VARCHAR(50) NOT NULL,"
+    "   'birth_date' VARCHAR(50) NOT NULL,"
+    "   'first_name' VARCHAR(50) NOT NULL,"
+    "   'last_name' VARCHAR(50) NOT NULL,"
+    "   'sex' VARCHAR(10) NOT NULL,"
+    "   'hire_date' VARCHAR(50) NOT NULL,"
+    "   PRIMARY KEY ('emp_no'),"
+    "   FOREIGN KEY ('emp_title_id') REFERENCES 'titles' ('title_id')"
+    ") ENGINE=InnoDB")
 
-
-
-)
