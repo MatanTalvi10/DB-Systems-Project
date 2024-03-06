@@ -10,6 +10,7 @@ cnx.close()
 DB_Name = "employees"
 TABLES = {}
 
+# Creating departments table
 TABLES['departments'] = (
     "CREATE TABLE 'departments' ("
     "   'dept_no' VARCHAR(50) NOT NULL,"
@@ -17,7 +18,13 @@ TABLES['departments'] = (
 	"   PRIMARY KEY ('dept_no')"
     ") ENGINE=InnoDB")
 
-
+# Creating titles table
+TABLES['titles'] = (
+    "CREATE TABLE 'titles' ("
+    "   'title_id' VARCHAR(50) NOT NULL,"
+    "   'title' varchar(50) NOT NULL,"
+	"   PRIMARY KEY ('title_id')"
+    ") ENGINE=InnoDB")
 
 
 
