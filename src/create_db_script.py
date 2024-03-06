@@ -59,3 +59,12 @@ TABLES['dept_manager'] = (
     "   FOREIGN KEY ('emp_no') REFERENCES 'employees' ('emp_no')"
     ") ENGINE=InnoDB")
 
+# Creating salaries table
+TABLES['salaries'] = (
+    "CREATE TABLE 'salaries' ("
+    "   'emp_no' INT,"
+    "   'salary' INT,"
+    "   PRIMARY KEY ('emp_no'),"
+    "   FOREIGN KEY ('emp_no') REFERENCES 'employees' ('emp_no')"
+    ") ENGINE=InnoDB")
+
