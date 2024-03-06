@@ -1,5 +1,5 @@
 Name_1: Matan Talvi
 ID_1: 318903028
 
-Name_2: Yaron Ittah
+Name_2: Yaron Reuben Ittah
 ID_2: 208935312

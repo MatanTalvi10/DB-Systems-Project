@@ -1,2 +1,9 @@
-moviedb_api_key = "18d6b2ac429391e07054491ea8b9fa23"
-moviedb_base_url = "https://api.themoviedb.org/3"
+import mysql.connector
+import requests
+import MySQLdb as mdb
+import json
+from mysql.connector import errorcode
+from ucimlrepo import fetch_ucirepo 
+import pandas as pd
+  
+
