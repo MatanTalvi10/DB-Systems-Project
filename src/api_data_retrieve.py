@@ -6,10 +6,12 @@ import pandas as pd
 
 # Loading csv content
 df_department = pd.read_csv("src\CSV files\departments.csv")
-df_dept_emp = pd.read_csv("src\CSV files\dept_emp.csv")
-df_dept_manager = pd.read_csv("src\CSV files\dept_manager.csv")
+df_emp_dept = pd.read_csv("src\CSV files\emp_dept.csv")
+df_managers_dept = pd.read_csv("src\CSV files\managers_dept.csv")
 df_employees = pd.read_csv("src\CSV files\employees.csv")
-df_salaries = pd.read_csv("src\CSV files\salaries.csv")
-df_titles = pd.read_csv("src\\CSV files\\titles.csv")
+df_wages = pd.read_csv("src\CSV files\wages.csv")
+df_positions = pd.read_csv("src\\CSV files\\positions.csv")
+
+#def insert_department(csv_file)
 
 
