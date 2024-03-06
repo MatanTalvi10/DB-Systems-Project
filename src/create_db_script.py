@@ -40,3 +40,13 @@ TABLES['employees'] = (
     "   FOREIGN KEY ('emp_title_id') REFERENCES 'titles' ('title_id')"
     ") ENGINE=InnoDB")
 
+# Creating dept_emp table
+TABLES['dept_emp'] = (
+    "CREATE TABLE 'dept_emp' ("
+    "   'emp_no' INT,"
+    "   'dept_no' VARCHAR(50) NOT NULL,"
+    "   PRIMARY KEY ('emp_no','dept_no),"
+    "   FOREIGN KEY ('emp_no') REFERENCES 'employees' ('emp_no'),"
+    "   FOREIGN KEY ('dept_no') REFERENCES 'departments' ('dept_no')"
+    ") ENGINE=InnoDB")
+
