@@ -17,7 +17,22 @@ add_movies = ("INSERT INTO movies "
                "VALUES (%s, %s, %s, %s, %s)")
 
 add_budget = ("INSERT INTO budget "
-               "(movie_id,title,release_date,runtime,adult_only) "
-               "VALUES (%s, %s, %s, %s, %s)")
+               "(movie_id,budget) "
+               "VALUES (%s, %s)")
+
+add_genre_movies = ("INSERT INTO genre_movies "
+               "(movie_id,genres) "
+               "VALUES (%s, %s)")
+
+add_genres = ("INSERT INTO genres "
+               "(genre_id,genre_name) "
+               "VALUES (%s, %s)")
+
+add_ratings = ("INSERT INTO ratings "
+               "(user_id,movie_id,rating) "
+               "VALUES (%s, %s, %s)")
+
+
+
 
 
