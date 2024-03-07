@@ -68,7 +68,7 @@ def main():
       "   PRIMARY KEY (movie_id,genre_id),"
       "   FOREIGN KEY (movie_id) REFERENCES movies (movie_id),"
       "   FOREIGN KEY (genre_id) REFERENCES genres (genre_id)"
-      ") ENGINE=InnoDB")
+      ") ENGINE=InnoDB")
 
 
   for table_name in TABLES:
