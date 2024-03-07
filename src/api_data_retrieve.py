@@ -5,13 +5,19 @@ from mysql.connector import errorcode
 import pandas as pd
 
 # Loading csv content
-df_department = pd.read_csv("src\CSV files\departments.csv")
-df_emp_dept = pd.read_csv("src\CSV files\emp_dept.csv")
-df_managers_dept = pd.read_csv("src\CSV files\managers_dept.csv")
-df_employees = pd.read_csv("src\CSV files\employees.csv")
-df_wages = pd.read_csv("src\CSV files\wages.csv")
-df_positions = pd.read_csv("src\\CSV files\\positions.csv")
+df_budget = pd.read_csv("src\\CSV files\\budget.csv")
+df_genre_movie = pd.read_csv("src\\CSV files\\genre_movie.csv")
+df_genres = pd.read_csv("src\\CSV files\\genres.csv")
+df_movies = pd.read_csv("src\\CSV files\\movies.csv")
+df_ratings = pd.read_csv("src\\CSV files\\ratings.csv")
 
-def insert_department(csv_file)
+
+add_movies = ("INSERT INTO movies "
+               "(movie_id,title,release_date,runtime,adult_only) "
+               "VALUES (%s, %s, %s, %s, %s)")
+
+add_budget = ("INSERT INTO budget "
+               "(movie_id,title,release_date,runtime,adult_only) "
+               "VALUES (%s, %s, %s, %s, %s)")
 
 
