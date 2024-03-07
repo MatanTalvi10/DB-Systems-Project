@@ -9,19 +9,13 @@ import create_db_script
 
 
 def main():
-    create_db_script.create_tables()
+    create_db_script.main()
     read_and_insert('budget',add_budget)
     read_and_insert('genre_movie',add_genre_movie)
     read_and_insert('genres',add_genres)
     read_and_insert('movies',add_movies)
     read_and_insert('ratings',add_ratings)
 
-
-cnx = mysql.connector.connect(user='matantalvi', password='mata10092',
-                              host='localhost',
-                              database='matantalvi',port= 3305)
-
-cursor = cnx.cursor()
 
 add_movies = ("INSERT INTO movies "
                "(movie_id,title,release_date,runtime,adult_only) "
@@ -44,6 +38,10 @@ add_ratings = ("INSERT INTO ratings "
                "VALUES (%s, %s, %s)")
 
 def read_and_insert(table_name,insert_statement):
+    cnx = mysql.connector.connect(user='matantalvi', password='mata10092',
+                              host='localhost',
+                              database='matantalvi',port= 3305)
+    cursor = cnx.cursor()
     a = 'src\\CSV files\\'
     c = '.csv'
     path = a + table_name + c
