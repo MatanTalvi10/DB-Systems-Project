@@ -17,13 +17,6 @@ def main():
     read_and_insert('ratings',add_ratings)
 
 
-
-
-
-
-
-
-
 cnx = mysql.connector.connect(user='matantalvi', password='mata10092',
                               host='localhost',
                               database='matantalvi',port= 3305)
