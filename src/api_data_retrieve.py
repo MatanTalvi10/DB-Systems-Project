@@ -10,15 +10,14 @@ import create_db_script
 
 def main():
     create_db_script.main()
-    #read_and_insert('movies',add_movies)
+    read_and_insert('movies',add_movies)
     #read_and_insert('budget',add_budget)
     #read_and_insert('genres',add_genres)
     #read_and_insert('genre_movie',add_genre_movie)
     #read_and_insert('ratings',add_ratings)
 
 
-add_movies = ("INSERT INTO movies "
-               "(movie_id,title,release_date,runtime,adult_only) "
+add_movies = ("INSERT INTO movies(movie_id,title,release_date,runtime,adult_only) "
                "VALUES (%s, %s, %s, %s, %s)")
 
 add_budget = ("INSERT INTO budget "
@@ -37,6 +36,41 @@ add_ratings = ("INSERT INTO ratings "
                "(user_id,movie_id,rating) "
                "VALUES (%s, %s, %s)")
 
+
+def read_and_insert(table_name, insert_statement):
+    try:
+        cnx = mysql.connector.connect(
+            user='matantalvi', password='mata10092',
+            host='localhost', database='matantalvi', port=3305
+        )
+        cursor = cnx.cursor()
+
+        a = 'src\\CSV files\\'
+        c = '.csv'
+        path = a + table_name + c
+
+        with open(path, mode='r', encoding='utf-8') as csv_data:
+            reader = csv.reader(csv_data, delimiter=';')
+            next(reader)  # Skip header row
+
+            for row in reader:
+                print(row)
+                cursor.execute(insert_statement, row)
+
+        cnx.commit()
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+    finally:
+        if 'cnx' in locals() and cnx.is_connected():
+            cursor.close()
+            cnx.close()
+
+if __name__ == "__main__":
+    main()
+
+'''
 def read_and_insert(table_name,insert_statement):
     cnx = mysql.connector.connect(user='matantalvi', password='mata10092',
                               host='localhost',
@@ -45,10 +79,12 @@ def read_and_insert(table_name,insert_statement):
     a = 'src\\CSV files\\'
     c = '.csv'
     path = a + table_name + c
-    with open(path, mode='r') as csv_data:
+    with open(path, mode='r',encoding='utf-8') as csv_data:
         reader = csv.reader(csv_data, delimiter=';')
         csv_data_list = list(reader)
+        next(reader)  # Skip header row
         for row in csv_data_list:
+            print(row)
             cursor.execute(insert_statement, row)
     cnx.commit()
     cursor.close()
@@ -59,3 +95,4 @@ def read_and_insert(table_name,insert_statement):
 
 if __name__ == "__main__":
     main()
+'''
