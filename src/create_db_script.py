@@ -21,10 +21,10 @@ cnx = mysql.connector.connect(user='matantalvi', password='mata10092',
                               database='matantalvi',port= 3305)
 cnx.close()
 '''
-def create_tables():
-    DB_Name = "movieDB"
-    TABLES = {}
+DB_Name = "movieDB"
+TABLES = {}
 
+def create_tables():
     # Creating movies table
     TABLES['movies'] = (
         "CREATE TABLE 'movies' ("
