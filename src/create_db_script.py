@@ -35,7 +35,7 @@ def main():
   # Creating genres table
   TABLES['genres'] = (
       "CREATE TABLE IF NOT EXISTS genres ("
-      "   genre_id VARCHAR(50) NOT NULL,"
+      "   genre_id INT NOT NULL,"
       "   genre_name varchar(50) NOT NULL,"
       "   PRIMARY KEY (genre_id)"
       ") ENGINE=InnoDB")
@@ -43,8 +43,8 @@ def main():
   # Creating ratings table
   TABLES['ratings'] = (
       "CREATE TABLE IF NOT EXISTS ratings ("
-      "   movie_id VARCHAR(50) NOT NULL,"
-      "   user_id varchar(50) NOT NULL,"
+      "   movie_id INT NOT NULL,"
+      "   user_id INT NOT NULL,"
       "   rating FLOAT,"
       "   PRIMARY KEY (user_id,movie_id),"
       "   FOREIGN KEY (movie_id) REFERENCES movies (movie_id)"
@@ -60,15 +60,15 @@ def main():
       "   FOREIGN KEY (movie_id) REFERENCES movies (movie_id)"
       ") ENGINE=InnoDB")
 
-  # Creating genre_movie table
+# Creating genre_movie table
   TABLES['genre_movie'] = (
-      "CREATE TABLE IF NOT EXISTS genre_movie ("
-      "   movie_id INT NOT NULL,"
-      "   genre_id INT NOT NULL,"
-      "   PRIMARY KEY (movie_id,genre_id),"
-      "   FOREIGN KEY (movie_id) REFERENCES movies (movie_id),"
-      "   FOREIGN KEY (genre_id) REFERENCES genres (genre_id)"
-      ") ENGINE=InnoDB")
+        "CREATE TABLE IF NOT EXISTS genre_movie ("
+        "   movie_id INT NOT NULL,"
+        "   genre_id VARCHAR(50) NOT NULL,"
+        "   PRIMARY KEY (movie_id, genre_id),"
+        "   FOREIGN KEY (movie_id) REFERENCES movies (movie_id),"
+        "   FOREIGN KEY (genre_id) REFERENCES genres (genre_id)"
+        ") ENGINE=InnoDB")
 
 
   for table_name in TABLES:
