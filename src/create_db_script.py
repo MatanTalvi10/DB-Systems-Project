@@ -22,64 +22,56 @@ cnx = mysql.connector.connect(user='matantalvi', password='mata10092',
 cnx.close()
 '''
 def create_tables():
-    DB_Name = "employees"
+    DB_Name = "movieDB"
     TABLES = {}
 
-    # Creating departments table
-    TABLES['departments'] = (
-        "CREATE TABLE 'departments' ("
-        "   'dept_id' VARCHAR(50) NOT NULL,"
-        "   'dept_title' varchar(50) NOT NULL,"
-        "   PRIMARY KEY ('dept_id')"
+    # Creating movies table
+    TABLES['movies'] = (
+        "CREATE TABLE 'movies' ("
+        "   'movie_id' INT NOT NULL,"
+        "   'title' VARCHAR(50) NOT NULL,"
+        "   'release_date' DATE,"
+        "   'run_time' INT NOT NULL,"
+        "   'adult_only' VARCHAR(50) NOT NULL,"
+        "   PRIMARY KEY ('movie_id')"
         ") ENGINE=InnoDB")
 
-    # Creating positions table
-    TABLES['positions'] = (
-        "CREATE TABLE 'positions' ("
-        "   'position_id' VARCHAR(50) NOT NULL,"
-        "   'position' varchar(50) NOT NULL,"
-        "   PRIMARY KEY ('position_id')"
+
+    # Creating genres table
+    TABLES['genres'] = (
+        "CREATE TABLE 'genres' ("
+        "   'genre_id' VARCHAR(50) NOT NULL,"
+        "   'genre_name' varchar(50) NOT NULL,"
+        "   PRIMARY KEY ('genre_id')"
         ") ENGINE=InnoDB")
 
-    # Creating employees table
-    TABLES['employees'] = (
-        "CREATE TABLE 'employees' ("
-        "   'employee_id' INT NOT NULL,"
-        "   'emp_title_id' VARCHAR(50) NOT NULL,"
-        "   'birth_date' VARCHAR(50) NOT NULL,"
-        "   'first_name' VARCHAR(50) NOT NULL,"
-        "   'last_name' VARCHAR(50) NOT NULL,"
-        "   'gender' VARCHAR(10) NOT NULL,"
-        "   'start_date' VARCHAR(50) NOT NULL,"
-        "   PRIMARY KEY ('employee_id'),"
-        "   FOREIGN KEY ('emp_title_id') REFERENCES 'positions' ('position_id')"
+    # Creating ratings table
+    TABLES['ratings'] = (
+        "CREATE TABLE 'ratings' ("
+        "   'movie_id' VARCHAR(50) NOT NULL,"
+        "   'user_id' varchar(50) NOT NULL,"
+        "   'rating' FLOAT,"
+        "   PRIMARY KEY ('user_id','movie_id'),"
+        "   FOREIGN KEY ('movie_id') REFERENCES 'movies' ('movie_id')"
         ") ENGINE=InnoDB")
 
-    # Creating emp_dept table
-    TABLES['emp_dept'] = (
-        "CREATE TABLE 'emp_dept' ("
-        "   'employee_id' INT NOT NULL,"
-        "   'dept_id' VARCHAR(50) NOT NULL,"
-        "   PRIMARY KEY ('employee_id','dept_id),"
-        "   FOREIGN KEY ('employee_id') REFERENCES 'employees' ('employee_id'),"
-        "   FOREIGN KEY ('dept_id') REFERENCES 'departments' ('dept_id')"
+
+    # Creating budget table
+    TABLES['budget'] = (
+        "CREATE TABLE 'budget' ("
+        "   'movie_id' INT NOT NULL,"
+        "   'budget' INT NOT NULL,"
+        "   PRIMARY KEY ('movie_id'),"
+        "   FOREIGN KEY ('movie_id') REFERENCES 'movies' ('movie_id')"
         ") ENGINE=InnoDB")
 
-    # Creating managers_dept table
-    TABLES['managers_dept'] = (
-        "CREATE TABLE 'managers_dept' ("
-        "   'dept_id' VARCHAR(50) NOT NULL,"
-        "   'employee_id' INT,"
-        "   PRIMARY KEY ('dept_id','employee_id),"
-        "   FOREIGN KEY ('employee_id') REFERENCES 'employees' ('employee_id')"
-        ") ENGINE=InnoDB")
-
-    # Creating wages table
-    TABLES['wages'] = (
-        "CREATE TABLE 'wages' ("
-        "   'employee_id' INT,"
-        "   'wage' INT,"
-        "   PRIMARY KEY ('employee_id'),"
-        "   FOREIGN KEY ('employee_id') REFERENCES 'employees' ('employee_id')"
-        ") ENGINE=InnoDB")
+    # Creating genre_movie table
+    TABLES['genre_movie'] = (
+        "CREATE TABLE 'genre_movie' ("
+        "   'movie_id' INT NOT NULL,"
+        "   'genre_id' INT NOT NULL,"
+        "   PRIMARY KEY ('movie_id','genre_id),"
+        "   FOREIGN KEY ('movie_id') REFERENCES 'movies' ('movie_id'),"
+        "   FOREIGN KEY ('genre_id') REFERENCES 'genres' ('genre_id')"
+        ") ENGINE=InnoDB")
 
