@@ -12,6 +12,6 @@ df_employees = pd.read_csv("src\CSV files\employees.csv")
 df_wages = pd.read_csv("src\CSV files\wages.csv")
 df_positions = pd.read_csv("src\\CSV files\\positions.csv")
 
-#def insert_department(csv_file)
+def insert_department(csv_file)
 
 
