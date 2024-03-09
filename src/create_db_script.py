@@ -72,13 +72,13 @@ def main():
 
 # Creating genre_movie table
   TABLES['genre_movie'] = (
-        "CREATE TABLE IF NOT EXISTS genre_movie ("
-        "   movie_id INT NOT NULL,"
-        "   genre_id VARCHAR(50) NOT NULL,"
-        "   PRIMARY KEY (movie_id, genre_id),"
-        "   FOREIGN KEY (movie_id) REFERENCES movies (movie_id),"
-        "   FOREIGN KEY (genre_id) REFERENCES genres (genre_id)"
-        ") ENGINE=InnoDB")
+      "CREATE TABLE IF NOT EXISTS genre_movie ("
+      "   movie_id INT NOT NULL,"
+      "   genre_id INT NOT NULL,"
+      "   PRIMARY KEY (movie_id, genre_id),"
+      "   FOREIGN KEY (movie_id) REFERENCES movies (movie_id),"
+      "   FOREIGN KEY (genre_id) REFERENCES genres (genre_id)"
+      ") ENGINE=InnoDB")
 
 
   for table_name in TABLES:
@@ -96,6 +96,6 @@ def main():
 
   cursor.close()
   cnx.close()
-  
+
 if __name__ == "__main__":
     main()

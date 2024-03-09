@@ -51,10 +51,10 @@ def read_and_insert(table_name, insert_statement):
 
         with open(path, mode='r', encoding='utf-8') as csv_data:
             reader = csv.reader(csv_data, delimiter=';')
-            next(reader)  # Skip header row
-
+            next(reader)
             for row in reader:
                 print(row)
+                print(type(row))
                 cursor.execute(insert_statement, row)
 
         cnx.commit()
