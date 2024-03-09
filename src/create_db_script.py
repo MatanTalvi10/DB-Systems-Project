@@ -18,6 +18,15 @@ def main():
   cnx.reconnect()
   cursor = cnx.cursor()
   
+  a = "DROP TABLE movies"
+  b = "DROP TABLE budget"
+  c = "DROP TABLE gere_movie"
+  d = "DROP TABLE genres"
+  e = "DROP TABLE ratings"
+  L = [a,b,c,d,e]
+  for i in L:
+	  cursor.execute(i)
+  
   DB_NAME = "movieDB"
   TABLES = {}
 
