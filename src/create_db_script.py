@@ -27,7 +27,7 @@ def main():
   L = [a,b,c,d,e]
   for i in L:
 	  cursor.execute(i)
-  '''
+   '''
   DB_NAME = "movieDB"
   TABLES = {}
 
@@ -35,7 +35,7 @@ def main():
   TABLES['movies'] = (
       "CREATE TABLE IF NOT EXISTS movies ("
       "   movie_id INT NOT NULL,"
-      "   title VARCHAR(50) NOT NULL,"
+      "   title VARCHAR(100) NOT NULL,"
       "   release_date DATE,"
       "   runtime INT NOT NULL,"
       "   adult_only VARCHAR(50) NOT NULL,"
@@ -96,6 +96,6 @@ def main():
 
   cursor.close()
   cnx.close()
- 
+
 if __name__ == "__main__":
     main()
