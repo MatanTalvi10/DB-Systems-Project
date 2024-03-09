@@ -37,7 +37,7 @@ def main():
       "   movie_id INT NOT NULL,"
       "   title VARCHAR(50) NOT NULL,"
       "   release_date DATE,"
-      "   run_time INT NOT NULL,"
+      "   runtime INT NOT NULL,"
       "   adult_only VARCHAR(50) NOT NULL,"
       "   PRIMARY KEY (movie_id)"
       ") ENGINE=InnoDB")

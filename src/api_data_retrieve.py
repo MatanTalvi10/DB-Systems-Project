@@ -5,6 +5,7 @@ from mysql.connector import errorcode
 import pandas as pd
 import csv
 import create_db_script
+from datetime import datetime 
 
 
 
@@ -50,12 +51,12 @@ def read_and_insert(table_name, insert_statement):
         path = a + table_name + c
 
         with open(path, mode='r', encoding='utf-8') as csv_data:
-            reader = csv.reader(csv_data, delimiter=';')
+            reader = csv.reader(csv_data, delimiter=',')
             next(reader)
             for row in reader:
-                print(row)
-                print(type(row))
-                cursor.execute(insert_statement, row)
+                if table_name == 'movies':
+                    row[2] = convert_date(row[2])
+                cursor.execute(insert_statement, tuple(row))
 
         cnx.commit()
 
@@ -66,6 +67,10 @@ def read_and_insert(table_name, insert_statement):
         if 'cnx' in locals() and cnx.is_connected():
             cursor.close()
             cnx.close()
+
+def convert_date(date_str):
+    # Convert date from 'DD/MM/YYYY' to 'YYYY-MM-DD'
+    return datetime.strptime(date_str, '%d/%m/%Y').strftime('%Y-%m-%d') 
 
 if __name__ == "__main__":
     main()
