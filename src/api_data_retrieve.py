@@ -24,8 +24,8 @@ def main():
         )
         cursor = cnx.cursor()
         query = ("SELECT * FROM movies "
-                "WHERE title LIKE Love%")        
-        cursor.execute(query)
+                "WHERE MATCH(title) AGAINST (%s IN BOOLEAN MODE)")
+        cursor.execute(query, tuple('Love'),)  # Pass the parameter as a tuple
         rows = cursor.fetchall()
         
         for row in rows:
