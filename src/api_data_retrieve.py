@@ -10,13 +10,34 @@ from queries_db_script import query_1
 
 
 def main():
-    create_db_script.main()
-    read_and_insert('movies',add_movies)
-    read_and_insert('budget',add_budget)
-    read_and_insert('genres',add_genres)
-    read_and_insert('genre_movie',add_genre_movie)
-    read_and_insert('ratings',add_ratings)
-    
+    #create_db_script.main()
+    #read_and_insert('movies',add_movies)
+    #read_and_insert('budget',add_budget)
+    #read_and_insert('genres',add_genres)
+    #read_and_insert('genre_movie',add_genre_movie)
+    #read_and_insert('ratings',add_ratings)
+        #query = "SELECT * FROM movies LIMIT 5"
+    try:
+        cnx = mysql.connector.connect(
+            user='matantalvi', password='mata10092',
+            host='localhost', database='matantalvi', port=3305
+        )
+        cursor = cnx.cursor()
+        query = ("SELECT * FROM movies "
+                "WHERE title LIKE Love%")        
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        
+        for row in rows:
+            print(row)
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+    finally:
+        if 'cnx' in locals() and cnx.is_connected():
+            cursor.close()
+            cnx.close() 
 
 add_movies = ("INSERT INTO movies(movie_id,title,release_date,runtime,adult_only) "
                "VALUES (%s, %s, %s, %s, %s)")

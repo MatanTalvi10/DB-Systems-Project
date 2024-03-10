@@ -4,15 +4,18 @@ from mysql.connector import errorcode
 
 
 def query_1(word):
-    query = ("SELECT * FROM movies "
-            "WHERE title LIKE CONCAT(%s, '%')")
+    #query = ("SELECT * FROM movies "
+     #       "WHERE MATCH(title) AGAINST (%s IN BOOLEAN MODE)")
+    
+    query = ("SELECT * FROM movies LIMIT 5")
+    
     try:
         cnx = mysql.connector.connect(
             user='matantalvi', password='mata10092',
             host='localhost', database='matantalvi', port=3305
         )
         cursor = cnx.cursor()
-        cursor.execute(query, (word))
+        cursor.execute(query)
         cnx.commit()
 
     except Exception as e:
@@ -32,7 +35,7 @@ def query_2(word):
             host='localhost', database='matantalvi', port=3305
         )
         cursor = cnx.cursor()
-        cursor.execute(query, (word))
+        cursor.execute(query, word)
         cnx.commit()
 
     except Exception as e:
