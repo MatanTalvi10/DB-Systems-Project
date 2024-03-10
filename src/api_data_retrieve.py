@@ -10,7 +10,7 @@ from datetime import datetime
 
 
 def main():
-    create_db_script.main()
+    #create_db_script.main()
     #read_and_insert('movies',add_movies)
     #read_and_insert('budget',add_budget)
     #read_and_insert('genres',add_genres)
