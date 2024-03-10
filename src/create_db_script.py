@@ -26,8 +26,8 @@ def main():
   d = "DROP TABLE ratings"
   L = [a,b,c,d,e]
   for i in L:
-	  cursor.execute(i)
-   '''
+    cursor.execute(i)  
+  '''
   DB_NAME = "movieDB"
   TABLES = {}
 
@@ -96,6 +96,10 @@ def main():
 
   cursor.close()
   cnx.close()
-
+  
+  
 if __name__ == "__main__":
     main()
+
+#FULLTEXT idx1 (title)
+#FULLTEXT idx2 (genre_name)
