@@ -39,7 +39,8 @@ def main():
       "   release_date DATE,"
       "   runtime INT NOT NULL,"
       "   adult_only VARCHAR(50) NOT NULL,"
-      "   PRIMARY KEY (movie_id)"
+      "   PRIMARY KEY (movie_id),"
+      "   FULLTEXT idx1 (title)"
       ") ENGINE=InnoDB")
 
   # Creating genres table
@@ -47,7 +48,8 @@ def main():
       "CREATE TABLE IF NOT EXISTS genres ("
       "   genre_id INT NOT NULL,"
       "   genre_name varchar(50) NOT NULL,"
-      "   PRIMARY KEY (genre_id)"
+      "   PRIMARY KEY (genre_id),"
+      "   FULLTEXT idx2 (genre_name)"
       ") ENGINE=InnoDB")
   
   # Creating ratings table
@@ -100,6 +102,3 @@ def main():
   
 if __name__ == "__main__":
     main()
-
-#FULLTEXT idx1 (title)
-#FULLTEXT idx2 (genre_name)
