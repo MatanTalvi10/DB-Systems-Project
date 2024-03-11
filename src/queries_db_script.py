@@ -151,4 +151,48 @@ def query_4(user_id):
             cursor.close()
             cnx.close()
 
+def query_5(movie_title):
+    '''
+    given a movie name, return the runtime of the movie,
+    its genre, and the average rating of the movie and the number of voters .
+    '''
+    query = ("SELECT "
+            "   m.title AS movie_name, "
+            "   m.runtime, "
+            "   g.genre_name, "
+            "   AVG(r.rating) AS average_rating, "
+            "   COUNT(r.rating) AS num_voters "
+            "FROM "
+            "   matantalvi.movies m "
+            "JOIN "
+            "   matantalvi.ratings r ON m.movie_id = r.movie_id "
+            "JOIN "
+            "   matantalvi.genre_movie gm ON m.movie_id = gm.movie_id "
+            "JOIN "
+            "   matantalvi.genres g ON gm.genre_id = g.genre_id "
+            "WHERE "
+            "   m.title = %s "
+            "GROUP BY "
+            "   m.title, m.runtime, g.genre_name;"
+        )
+    
+    try:
+        cnx = mysql.connector.connect(
+            user='matantalvi', password='mata10092',
+            host='localhost', database='matantalvi', port=3305
+        )
+        cursor = cnx.cursor()
+        cursor.execute(query,(movie_title,))
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
+        cnx.commit()
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+    finally:
+        if 'cnx' in locals() and cnx.is_connected():
+            cursor.close()
+            cnx.close()
 
