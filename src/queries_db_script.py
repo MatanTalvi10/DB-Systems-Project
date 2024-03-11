@@ -5,7 +5,7 @@ from mysql.connector import errorcode
 
 def query_1(word):
     '''
-     Full-text search for titles of movies based on a specific word given as the input.
+     Full-text search for titles of movies based that contain a specific word given as the input.
     '''
     query = ("SELECT * FROM movies " 
             "WHERE MATCH(title) AGAINST(%s IN NATURAL LANGUAGE MODE)")
@@ -118,7 +118,7 @@ def query_3():
 
 def query_4(user_id):
     '''
-     given a user id, return the names of the movies he scored and the scoring for each movie .
+     given a user id, return the names of the movies he rated and the ratings for each movie .
     '''
     query = ("SELECT "
             "   m.title AS movie_name, "
