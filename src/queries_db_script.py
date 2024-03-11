@@ -4,10 +4,8 @@ from mysql.connector import errorcode
 
 
 def query_1(word):
-    #query = ("SELECT * FROM movies "
-     #       "WHERE MATCH(title) AGAINST (%s IN BOOLEAN MODE)")
-    
-    query = ("SELECT * FROM movies LIMIT 5")
+    query = ("SELECT * FROM movies " 
+            "WHERE MATCH(title) AGAINST(%s IN NATURAL LANGUAGE MODE)")
     
     try:
         cnx = mysql.connector.connect(
@@ -15,7 +13,10 @@ def query_1(word):
             host='localhost', database='matantalvi', port=3305
         )
         cursor = cnx.cursor()
-        cursor.execute(query)
+        cursor.execute(query,(word,))
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
         cnx.commit()
 
     except Exception as e:
