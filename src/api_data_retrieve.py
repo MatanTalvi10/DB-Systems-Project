@@ -5,7 +5,7 @@ import pandas as pd
 import csv
 import create_db_script
 from datetime import datetime 
-from queries_db_script import query_1
+import queries_db_script as qds
 
 
 
@@ -16,7 +16,7 @@ def main():
     #read_and_insert('genres',add_genres)
     #read_and_insert('genre_movie',add_genre_movie)
     #read_and_insert('ratings',add_ratings)
-    query_1('Love')
+    qds.query_3()
 
 add_movies = ("INSERT INTO movies(movie_id,title,release_date,runtime,adult_only) "
                "VALUES (%s, %s, %s, %s, %s)")
