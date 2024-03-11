@@ -153,7 +153,7 @@ def query_4(user_id):
 
 def query_5(movie_title):
     '''
-    given a movie name, return the runtime of the movie,
+    Given a movie name, return the runtime of the movie,
     its genre, and the average rating of the movie and the number of voters .
     '''
     query = ("SELECT "
@@ -196,3 +196,41 @@ def query_5(movie_title):
             cursor.close()
             cnx.close()
 
+def query_6(year):
+    '''
+    Given a year, return all the movies that where released on that year and add its budget,
+    order by budget 
+    '''
+    query = ("SELECT "
+            "   m.title AS movie_name, "
+            "   m.release_date, "
+            "   b.budget "
+            "FROM "
+            "   matantalvi.movies m "
+            "JOIN "
+            "   matantalvi.budget b ON m.movie_id = b.movie_id "
+            "WHERE "
+            "   YEAR(m.release_date) = %s "
+            "ORDER BY "
+            "   b.budget DESC;"
+        )
+    
+    try:
+        cnx = mysql.connector.connect(
+            user='matantalvi', password='mata10092',
+            host='localhost', database='matantalvi', port=3305
+        )
+        cursor = cnx.cursor()
+        cursor.execute(query,(year,))
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
+        cnx.commit()
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+    finally:
+        if 'cnx' in locals() and cnx.is_connected():
+            cursor.close()
+            cnx.close()
