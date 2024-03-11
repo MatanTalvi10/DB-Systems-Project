@@ -75,7 +75,7 @@ def query_2():
 
 def query_3():
     '''
-     Full-text search for titles of movies based on a specific word given as the input.
+     Lists the movies and their genre with their average rating by all users.
     '''
     query = ("SELECT "
         "   m.title AS movie_name, "
@@ -114,3 +114,41 @@ def query_3():
         if 'cnx' in locals() and cnx.is_connected():
             cursor.close()
             cnx.close()
+
+
+def query_4(user_id):
+    '''
+     given a user id, return the names of the movies he scored and the scoring for each movie .
+    '''
+    query = ("SELECT "
+            "   m.title AS movie_name, "
+            "   r.rating "
+            "FROM "
+            "   matantalvi.movies m "
+            "JOIN "
+            "   matantalvi.ratings r ON m.movie_id = r.movie_id "
+            "WHERE "
+            "   r.user_id = %s;"
+        )
+    
+    try:
+        cnx = mysql.connector.connect(
+            user='matantalvi', password='mata10092',
+            host='localhost', database='matantalvi', port=3305
+        )
+        cursor = cnx.cursor()
+        cursor.execute(query,(user_id,))
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
+        cnx.commit()
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+    finally:
+        if 'cnx' in locals() and cnx.is_connected():
+            cursor.close()
+            cnx.close()
+
+
