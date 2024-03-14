@@ -19,7 +19,7 @@ def main():
   cursor = cnx.cursor()
   
   # if you want to test our "create_db_script use this DROP loop"
-  '''
+  
   e = "DROP TABLE movies"
   b = "DROP TABLE budget"
   a = "DROP TABLE genre_movie"
@@ -100,6 +100,6 @@ def main():
   cursor.close()
   cnx.close()
   
-  
+'''
 if __name__ == "__main__":
     main()
