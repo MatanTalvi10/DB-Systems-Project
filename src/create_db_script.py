@@ -18,6 +18,7 @@ def main():
   cnx.reconnect()
   cursor = cnx.cursor()
   
+  # if you want to test our "create_db_script use this DROP loop"
   '''
   e = "DROP TABLE movies"
   b = "DROP TABLE budget"
