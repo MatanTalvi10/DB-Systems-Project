@@ -69,7 +69,7 @@ def main():
       "CREATE TABLE IF NOT EXISTS budget ("
       "   movie_id INT NOT NULL,"
       "   budget INT NOT NULL,"
-      "   prod_company varchar(50) NOT NULL,"
+      "   prod_company varchar(100) NOT NULL,"
       "   PRIMARY KEY (movie_id, prod_company),"
       "   FOREIGN KEY (movie_id) REFERENCES movies (movie_id)"
       ") ENGINE=InnoDB")
@@ -100,6 +100,6 @@ def main():
 
   cursor.close()
   cnx.close()
- 
+
 if __name__ == "__main__":
     main()

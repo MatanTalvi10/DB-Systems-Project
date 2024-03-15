@@ -1,6 +1,8 @@
 import queries_db_script as qdb
 
 
+# uncomment an example in order to run it
+
 # 1   
 #example_1 = qdb.query_1('Love')
 '''
@@ -22,7 +24,7 @@ Counts the number of movies in each genre according to predetermined buckets of 
 '''
 
 # 4   
-example_4 = qdb.query_3()
+#example_4 = qdb.query_3()
 '''
 Lists the movies and their genre with their average rating by all users.
 '''
@@ -40,7 +42,7 @@ return the names of the movies user_id = 1 rated and the ratings for each movie.
 '''
 
 # 7   
-#example_7 = qdb.query_5(2)
+example_7 = qdb.query_5(2)
 '''
 return the names of the movies user_id = 1 rated and the ratings for each movie.
 '''
