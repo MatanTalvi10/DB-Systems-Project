@@ -10,12 +10,12 @@ import queries_db_script as qds
 
 
 def main():
-    create_db_script.main()
+    #create_db_script.main()
     read_and_insert('movies',add_movies)
-    read_and_insert('budget',add_budget)
-    read_and_insert('genres',add_genres)
-    read_and_insert('genre_movie',add_genre_movie)
-    read_and_insert('ratings',add_ratings)
+    #read_and_insert('budget',add_budget)
+    #read_and_insert('genres',add_genres)
+    #read_and_insert('genre_movie',add_genre_movie)
+    #read_and_insert('ratings',add_ratings)
     
 
 add_movies = ("INSERT INTO movies(movie_id,title,release_date,runtime,adult_only) "
