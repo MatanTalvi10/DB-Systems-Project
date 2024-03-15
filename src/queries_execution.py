@@ -24,9 +24,9 @@ Counts the number of movies in each genre according to predetermined buckets of 
 '''
 
 # 4   
-#example_4 = qdb.query_3()
+example_4 = qdb.query_3()
 '''
-Lists the movies and their genre with their average rating by all users.
+Lists the movies with their average rating by all users.
 '''
 
 # 5   
@@ -42,7 +42,7 @@ return the names of the movies user_id = 1 rated and the ratings for each movie.
 '''
 
 # 7   
-example_7 = qdb.query_5(2)
+#example_7 = qdb.query_5(2)
 '''
 return the names of the movies user_id = 1 rated and the ratings for each movie.
 '''
@@ -54,4 +54,9 @@ return all the movies that where released in 2008 and add its budget,
 order by budget .
 '''
 
-
+# 9   
+#example_9 = qdb.query_7()
+'''
+for every production company, return the movie title with the highest budget for
+    every genre, and its budget.
+'''

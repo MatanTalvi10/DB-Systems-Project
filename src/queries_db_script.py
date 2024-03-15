@@ -75,25 +75,21 @@ def query_2():
 
 def query_3():
     '''
-     Lists the movies and their genre with their average rating by all users.
+     Lists the movies with their average rating by all users.
     '''
     query = ("SELECT "
-        "   m.title AS movie_name, "
-        "   g.genre_name, "
-        "   AVG(r.rating) AS average_rating "
-        "FROM "
-        "   matantalvi.movies m "
-        "JOIN "
-        "   matantalvi.ratings r ON m.movie_id = r.movie_id "
-        "JOIN "
-        "   matantalvi.genre_movie gm ON m.movie_id = gm.movie_id "
-        "JOIN "
-        "   matantalvi.genres g ON gm.genre_id = g.genre_id "
-        "GROUP BY "
-        "   m.title, g.genre_name "
-        "ORDER BY "
-        "   m.title;"
-    )
+            "   m.title AS movie_name, "
+            "   AVG(r.rating) AS average_rating "
+            "FROM "
+            "   matantalvi.movies m "
+            "JOIN "
+            "   matantalvi.ratings r ON m.movie_id = r.movie_id "
+            "GROUP BY "
+            "   m.title "
+            "ORDER BY "
+            "   m.title;"
+            )
+
     
     try:
         cnx = mysql.connector.connect(
@@ -234,3 +230,42 @@ def query_6(year):
         if 'cnx' in locals() and cnx.is_connected():
             cursor.close()
             cnx.close()
+
+def query_7():
+    '''
+    for every production company, return the movie title with the highest budget for
+        every genre, and its budget.
+    '''
+    
+    query = """
+        SELECT b.prod_company, g.genre_name, m.title, b.budget
+        FROM matantalvi_budget b
+        JOIN matantalvi_movies m ON b.movie_id = m.movie_id
+        JOIN matantalvi_genre_movie gm ON m.movie_id = gm.movie_id
+        JOIN matantalvi_genres g ON gm.genre_id = g.genre_id
+        JOIN (
+            SELECT prod_company, genre_id, MAX(budget) AS max_budget
+            FROM matantalvi_budget
+            GROUP BY prod_company, genre_id
+        ) AS max_budgets ON b.prod_company = max_budgets.prod_company AND b.budget = max_budgets.max_budget AND gm.genre_id = max_budgets.genre_id
+    """
+
+    try:
+        cnx = mysql.connector.connect(
+            user='matantalvi', password='mata10092',
+            host='localhost', database='matantalvi', port=3305
+        )
+        cursor = cnx.cursor()
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
+        cnx.commit()
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+    finally:
+        if 'cnx' in locals() and cnx.is_connected():
+            cursor.close()
+            cnx.close() 
