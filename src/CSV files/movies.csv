@@ -1463,7 +1463,7 @@ movie_id,title,release_date,runtime,adult_only
 88751,Journey to the Center of the Earth,10/7/2008,93,FALSE
 274479,Joy,24/12/2015,124,FALSE
 10866,Joy Ride,5/10/2001,97,FALSE
-11661,Joyeux Noël,9/11/2005,116,FALSE
+11661,Joyeux Noel,9/11/2005,116,FALSE
 821,Judgment at Nuremberg,1/12/1961,186,FALSE
 24803,Julie & Julia,6/8/2009,123,FALSE
 8247,Jumper,10/2/2008,88,FALSE
@@ -2159,7 +2159,7 @@ movie_id,title,release_date,runtime,adult_only
 13155,Return to Oz,21/06/1985,109,FALSE
 13888,Return to the Blue Lagoon,2/8/1991,98,FALSE
 4148,Revolutionary Road,19/12/2008,119,FALSE
-11011,Ri¢hie Ri¢h,19/12/1994,95,FALSE
+11011,Richie Rich,19/12/1994,95,FALSE
 87421,Riddick,2/9/2013,119,FALSE
 168530,Ride Along,7/1/2014,99,FALSE
 323675,Ride Along 2,14/01/2016,102,FALSE
@@ -3081,7 +3081,7 @@ movie_id,title,release_date,runtime,adult_only
 64328,The Muppets,22/11/2011,103,FALSE
 11370,The Musketeer,7/9/2001,104,FALSE
 37137,The Naked Gun 2.5: The Smell of Fear,28/06/1991,85,FALSE
-36593,The Naked Gun 33��: The Final Insult,18/03/1994,83,FALSE
+36593,The Naked Gun 33: The Final Insult,18/03/1994,83,FALSE
 50848,The Names of Love,24/11/2010,100,FALSE
 16727,The Namesake,2/9/2006,122,FALSE
 2447,The Nativity Story,1/12/2006,101,FALSE
@@ -3529,7 +3529,7 @@ movie_id,title,release_date,runtime,adult_only
 77951,Walking With Dinosaurs,18/12/2013,87,FALSE
 10673,Wall Street,10/12/1987,126,FALSE
 33909,Wall Street: Money Never Sleeps,2/9/2010,133,FALSE
-10681,WALL·E,22/06/2008,98,FALSE
+10681,WALL E,22/06/2008,98,FALSE
 8885,Waltz with Bashir,25/06/2008,90,FALSE
 50647,Wanderlust,23/02/2012,98,FALSE
 8909,Wanted,19/06/2008,110,FALSE
@@ -3641,7 +3641,7 @@ movie_id,title,release_date,runtime,adult_only
 36668,XMen: The Last Stand,24/05/2006,104,FALSE
 7451,xXx,9/8/2002,124,FALSE
 11679,xXx: State of the Union,27/04/2005,101,FALSE
-1391,Y Tu Mamá Tambien,8/6/2001,106,FALSE
+1391,Y Tu Mama Tambien,8/6/2001,106,FALSE
 17610,Year One,18/06/2009,97,FALSE
 185008,Yeh Jawaani Hai Deewani,31/05/2013,159,FALSE
 10269,Yentl,18/11/1983,132,FALSE
