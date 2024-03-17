@@ -56,8 +56,7 @@ order by budget .
 '''
 
 # 9   
-#example_9 = qdb.query_7()
+example_9 = qdb.query_7()
 '''
-for every production company, return the movie title with the highest budget for
-    every genre, and its budget.
+returns the maximal budget with the corresponding movie of each production company.
 '''

@@ -228,13 +228,11 @@ def query_6(year):
 
 def query_7():
     '''
-    for every production company, return the movie title with the highest budget for
-        every genre, and its budget.
+    returns the maximal budget with the corresponding movie of each production company.
     '''
     
     query = ("SELECT "
             "   b.prod_company, "
-            "   g.genre_name, "
             "   m.title, "
             "   b.budget "
             "FROM "
@@ -242,23 +240,18 @@ def query_7():
             "JOIN "
             "   matantalvi.movies m ON b.movie_id = m.movie_id "
             "JOIN "
-            "   matantalvi.genre_movie gm ON m.movie_id = gm.movie_id "
-            "JOIN "
-            "   matantalvi.genres g ON gm.genre_id = g.genre_id "
-            "JOIN "
             "   (SELECT "
             "       prod_company, "
-            "       genre_id, "
             "       MAX(budget) AS max_budget "
             "    FROM "
             "       matantalvi.budget "
             "    GROUP BY "
-            "       prod_company, "
-            "       genre_id) AS max_budgets "
+            "       prod_company) AS max_budgets "
             "ON "
             "   b.prod_company = max_budgets.prod_company "
             "   AND b.budget = max_budgets.max_budget "
-            "   AND gm.genre_id = max_budgets.genre_id "
+            "ORDER BY "
+            "   b.budget DESC;"
             )
 
 
