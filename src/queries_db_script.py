@@ -150,26 +150,21 @@ def query_4(user_id):
 def query_5(movie_title):
     '''
     Given a movie name, return the runtime of the movie,
-    its genre, and the average rating of the movie and the number of voters .
+    and the average rating of the movie and the number of voters .
     '''
     query = ("SELECT "
             "   m.title AS movie_name, "
             "   m.runtime, "
-            "   g.genre_name, "
             "   AVG(r.rating) AS average_rating, "
             "   COUNT(r.rating) AS num_voters "
             "FROM "
             "   matantalvi.movies m "
             "JOIN "
             "   matantalvi.ratings r ON m.movie_id = r.movie_id "
-            "JOIN "
-            "   matantalvi.genre_movie gm ON m.movie_id = gm.movie_id "
-            "JOIN "
-            "   matantalvi.genres g ON gm.genre_id = g.genre_id "
             "WHERE "
             "   m.title = %s "
             "GROUP BY "
-            "   m.title, m.runtime, g.genre_name;"
+            "   m.title, m.runtime;"
         )
     
     try:
@@ -237,18 +232,35 @@ def query_7():
         every genre, and its budget.
     '''
     
-    query = """
-        SELECT b.prod_company, g.genre_name, m.title, b.budget
-        FROM matantalvi_budget b
-        JOIN matantalvi_movies m ON b.movie_id = m.movie_id
-        JOIN matantalvi_genre_movie gm ON m.movie_id = gm.movie_id
-        JOIN matantalvi_genres g ON gm.genre_id = g.genre_id
-        JOIN (
-            SELECT prod_company, genre_id, MAX(budget) AS max_budget
-            FROM matantalvi_budget
-            GROUP BY prod_company, genre_id
-        ) AS max_budgets ON b.prod_company = max_budgets.prod_company AND b.budget = max_budgets.max_budget AND gm.genre_id = max_budgets.genre_id
-    """
+    query = ("SELECT "
+            "   b.prod_company, "
+            "   g.genre_name, "
+            "   m.title, "
+            "   b.budget "
+            "FROM "
+            "   matantalvi.budget b "
+            "JOIN "
+            "   matantalvi.movies m ON b.movie_id = m.movie_id "
+            "JOIN "
+            "   matantalvi.genre_movie gm ON m.movie_id = gm.movie_id "
+            "JOIN "
+            "   matantalvi.genres g ON gm.genre_id = g.genre_id "
+            "JOIN "
+            "   (SELECT "
+            "       prod_company, "
+            "       genre_id, "
+            "       MAX(budget) AS max_budget "
+            "    FROM "
+            "       matantalvi.budget "
+            "    GROUP BY "
+            "       prod_company, "
+            "       genre_id) AS max_budgets "
+            "ON "
+            "   b.prod_company = max_budgets.prod_company "
+            "   AND b.budget = max_budgets.max_budget "
+            "   AND gm.genre_id = max_budgets.genre_id "
+            )
+
 
     try:
         cnx = mysql.connector.connect(

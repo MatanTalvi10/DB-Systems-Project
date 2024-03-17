@@ -24,7 +24,7 @@ Counts the number of movies in each genre according to predetermined buckets of 
 '''
 
 # 4   
-example_4 = qdb.query_3()
+#example_4 = qdb.query_3()
 '''
 Lists the movies with their average rating by all users.
 '''
@@ -42,9 +42,10 @@ return the names of the movies user_id = 1 rated and the ratings for each movie.
 '''
 
 # 7   
-#example_7 = qdb.query_5(2)
+#example_7 = qdb.query_5('It Follows')
 '''
-return the names of the movies user_id = 1 rated and the ratings for each movie.
+return the runtime of the movie It follows,
+    and the average rating of the movie and the number of voters.
 '''
 
 # 8   
