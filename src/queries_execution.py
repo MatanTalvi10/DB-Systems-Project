@@ -56,7 +56,7 @@ order by budget .
 '''
 
 # 9   
-example_9 = qdb.query_7()
+#example_9 = qdb.query_7()
 '''
 returns the maximal budget with the corresponding movie of each production company.
 '''

@@ -1,7 +1,6 @@
 import mysql.connector
 import MySQLdb as mdb
 from mysql.connector import errorcode
-import pandas as pd
 import csv
 import create_db_script
 from datetime import datetime 
